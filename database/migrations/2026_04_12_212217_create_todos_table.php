@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Schema::create('fotos', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('caminho',255);
-        //     $table->string('nome',255);
-        //     $table->timestamps();
-        
+        Schema::create('todos', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->boolean('completed')->default(false);
+            $table->timestamps();
+
+        });
     }
 
     /**
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // Schema::dropIfExists('fotos');
+        Schema::dropIfExists('todos');
     }
 };
